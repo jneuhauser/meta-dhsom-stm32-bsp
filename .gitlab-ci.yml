@@ -1,0 +1,37 @@
+image: ghcr.io/siemens/kas/kas:latest-release
+
+variables:
+  # Speed up builds by reusing downloads and sstate-cache from previous builds
+  GIT_CLEAN_FLAGS: -ffdx -e build/downloads -e build/sstate-cache
+  KAS_BUILD_DIR: $CI_PROJECT_DIR/build
+  KAS_WORK_DIR: $CI_PROJECT_DIR
+
+.build-generic:
+  stage: build
+  # Run only one job for this project at a time
+  resource_group: $CI_PROJECT_PATH_SLUG
+  before_script:
+    - mkdir -p "${KAS_BUILD_DIR}"
+    - cd "${KAS_WORK_DIR}"
+  after_script:
+    - find "${KAS_BUILD_DIR}" -type f -path "*deploy/images*" -iname "*.wic*" -exec mv -vf "{}" "${CI_PROJECT_DIR}/" \;
+    - find "${KAS_BUILD_DIR}" -type f -path "*deploy/licenses*" -iname "license.manifest" -exec mv -vf "{}" "${CI_PROJECT_DIR}/" \;
+    - find "${KAS_BUILD_DIR}" -type f -path "*deploy/sdk*" -iname "*.sh" -exec mv -vf "{}" "${CI_PROJECT_DIR}/" \;
+  artifacts:
+    paths:
+      - "*.wic.gz"
+      - license.manifest
+      - "*.sh"
+    expire_in: 2 hrs
+
+core-image-base stm32mp1-dhcor-avenger96:
+  extends: .build-generic
+  script:
+    - kas build kas/dh-stm32mp1-dhcor-avenger96.yml
+    - kas build kas/dh-stm32mp1-dhcor-avenger96.yml:kas/option/sdk.yml
+
+dh-image-demo stm32mp1-dhcor-avenger96:
+  extends: .build-generic
+  script:
+    - kas build kas/dh-stm32mp1-dhcor-avenger96.yml:kas/option/dh-image-demo.yml
+    - kas build kas/dh-stm32mp1-dhcor-avenger96.yml:kas/option/dh-image-demo.yml:kas/option/sdk.yml

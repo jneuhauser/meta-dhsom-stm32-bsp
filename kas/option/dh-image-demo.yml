@@ -1,0 +1,7 @@
+header:
+  version: 2
+  includes:
+    - kas/include/common-meta-dhsom-extras.yml
+
+target:
+  - dh-image-demo
