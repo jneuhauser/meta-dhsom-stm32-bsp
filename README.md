@@ -60,8 +60,8 @@ changes and exit the menu (use TAB key to navigate the buttons).
 
 ```
 $ export KAS_WORK_DIR=/path/to/work/directory/
-$ cd meta-dhsom-stm32-bsp/kas
-$ PATH=${PATH}:~/.local/bin kas menu
+$ cd meta-dhsom-stm32-bsp
+$ PATH=${PATH}:~/.local/bin kas menu kas/Kconfig
 ```
 
 The `*** Inferred and expert settings ***` section does not need to be changed.
