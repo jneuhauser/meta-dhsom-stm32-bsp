@@ -1,7 +1,7 @@
 header:
   version: 2
   includes:
-    - include/common-settings.yml
+    - kas/include/common-settings.yml
 
 distro: nodistro
 

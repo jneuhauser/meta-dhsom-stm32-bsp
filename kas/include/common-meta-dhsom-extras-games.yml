@@ -1,7 +1,7 @@
 header:
   version: 2
   includes:
-    - include/common-meta-dhsom-extras-qt5.yml
+    - kas/include/common-meta-dhsom-extras-qt5.yml
 
 repos:
   meta-games:

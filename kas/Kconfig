@@ -91,33 +91,33 @@ config KAS_INCLUDE_BSP_YML_FILE
 	     MACHINE_STM32MP1_DHCOM_PICOITX || \
 	     MACHINE_STM32MP1_DHCOR_AVENGER96 || \
 	     MACHINE_STM32MP1_DHCOR_DRC_COMPACT
-  default "dh-stm32mp1-dhcom-pdk2.yml" if MACHINE_STM32MP1_DHCOM_PDK2
-  default "dh-stm32mp1-dhcom-drc02.yml" if MACHINE_STM32MP1_DHCOM_DRC02
-  default "dh-stm32mp1-dhcom-picoitx.yml" if MACHINE_STM32MP1_DHCOM_PICOITX
-  default "dh-stm32mp1-dhcor-avenger96.yml" if MACHINE_STM32MP1_DHCOR_AVENGER96
-  default "dh-stm32mp1-dhcor-drc-compact.yml" if MACHINE_STM32MP1_DHCOR_DRC_COMPACT
+  default "kas/dh-stm32mp1-dhcom-pdk2.yml" if MACHINE_STM32MP1_DHCOM_PDK2
+  default "kas/dh-stm32mp1-dhcom-drc02.yml" if MACHINE_STM32MP1_DHCOM_DRC02
+  default "kas/dh-stm32mp1-dhcom-picoitx.yml" if MACHINE_STM32MP1_DHCOM_PICOITX
+  default "kas/dh-stm32mp1-dhcor-avenger96.yml" if MACHINE_STM32MP1_DHCOR_AVENGER96
+  default "kas/dh-stm32mp1-dhcor-drc-compact.yml" if MACHINE_STM32MP1_DHCOR_DRC_COMPACT
 
 config KAS_INCLUDE_EXTRAS_YML_FILE
   string "KAS Extras layer YML file"
   depends on INCLUDE_EXTRAS_YML
-  default "include/common-meta-dhsom-extras.yml"
+  default "kas/include/common-meta-dhsom-extras.yml"
 
 config KAS_INCLUDE_EXTRAS_CHROMIUM_YML_FILE
   string "KAS Extras layer CHROMIUM YML file"
   depends on INCLUDE_EXTRAS_CHROMIUM_YML
-  default "include/common-meta-dhsom-extras-chromium.yml"
+  default "kas/include/common-meta-dhsom-extras-chromium.yml"
 
 config KAS_INCLUDE_EXTRAS_GAMES_YML_FILE
   string "KAS Extras layer GAMES YML file"
   depends on INCLUDE_EXTRAS_GAMES_YML && INCLUDE_EXTRAS_QT5_YML
-  default "include/common-meta-dhsom-extras-games.yml"
+  default "kas/include/common-meta-dhsom-extras-games.yml"
 
 config KAS_INCLUDE_EXTRAS_QT5_YML_FILE
   string "KAS Extras layer Qt5 YML file"
   depends on INCLUDE_EXTRAS_QT5_YML
-  default "include/common-meta-dhsom-extras-qt5.yml"
+  default "kas/include/common-meta-dhsom-extras-qt5.yml"
 
 config KAS_INCLUDE_EXTRAS_WPE_YML_FILE
   string "KAS Extras layer WPE YML file"
   depends on INCLUDE_EXTRAS_WPE_YML
-  default "include/common-meta-dhsom-extras-wpe.yml"
+  default "kas/include/common-meta-dhsom-extras-wpe.yml"
